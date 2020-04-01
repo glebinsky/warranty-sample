@@ -1,4 +1,6 @@
-import WarrantyOffers from './modules/warranty-offers.js'
+import WarrantyOffers from '/modules/warranty-offers.js'
+
+customElements.define('warranty-offers', WarrantyOffers)
 
 class Mulberry extends HTMLElement {
   connectedCallback() {
@@ -7,8 +9,6 @@ class Mulberry extends HTMLElement {
 }
 
 customElements.define('mulberry-app', Mulberry)
-customElements.define('warranty-offers', WarrantyOffers)
-
 
 // import { post } from './modules/fetch.js'
 

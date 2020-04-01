@@ -2,14 +2,16 @@ import {
   SubscriptionDataMap,
   subscribe,
   unsubscribe
-} from "./store.js"
+} from '/store.js'
 
-let count = 0
+import Offer from '/modules/offer.js'
+customElements.define('offer-item', Offer)
 
 export default class WarrantyOffers extends HTMLElement {
   constructor(){
-    super()
+    const self = super()
     this.boundRender = this.render.bind(this)
+    return self
   }
 
   connectedCallback() {
@@ -20,13 +22,14 @@ export default class WarrantyOffers extends HTMLElement {
     unsubscribe(SubscriptionDataMap.WARRANTY_OFFERS, this.boundRender)
   }
 
+  count = 0
   render(data) {
-    console.log(count++)
-    const newFragment = new DocumentFragment()
-    newFragment.append(this.createHeader())
-    newFragment.append(this.createMain(data))
+    console.log(this.count++)
+    const fragment = new DocumentFragment()
+    fragment.append(this.createHeader())
+    fragment.append(this.createMain(data))
     this.innerHTML = null
-    this.append(newFragment)
+    this.append(fragment)
   }
 
   createHeader() {
@@ -35,9 +38,26 @@ export default class WarrantyOffers extends HTMLElement {
     return el
   }
 
-  createMain(data) {
-    const el = document.createElement('main')
-    el.innerHTML = JSON.stringify(data)
-    return el
+  createMain(offers) {
+    const main = document.createElement('main')
+    if(!offers.length) {
+      const p = document.createElement('p')
+      p.innerText = 'No offers available'
+      main.append(p)
+      return main
+    }
+
+    main.append(this.createOffers(offers))
+    return main
+  }
+
+  createOffers(offers) {
+    const list = document.createElement('ul')
+    offers.forEach(item => {
+      const offer = document.createElement('offer-item')
+      offer.setAttribute('data', JSON.stringify(item))
+      list.append(offer)
+    })
+    return list
   }
 }

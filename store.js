@@ -1,4 +1,4 @@
-import { post } from './fetch.js'
+import { post } from '/fetch.js'
 
 export {
   SubscriptionDataMap,
@@ -35,7 +35,7 @@ function subscribe(name, fn) {
     return Promise.resolve()
   } else {
     return dataGetters[name]()
-      .then(data => console.log(name, data) || storeAndPublish(name, data))
+      .then(data => storeAndPublish(name, data))
       .catch(e => console.log(name, e))
   }
 }
@@ -45,8 +45,7 @@ function unsubscribe(name, fn) {
 }
 
 function storeAndPublish(name, newData) {
-  console.log('storeAndPublish', name)
-  // if(JSON.stringify(newData) === JSON.stringify(storeData[name])) return
+  if(JSON.stringify(newData) === JSON.stringify(storeData[name])) return
 
   storeData[name] = newData
   subscriptions[name].forEach((value, key) => key(storeData[name]))
@@ -74,5 +73,8 @@ function getProduct() {
   })
 }
 
-
-setInterval(() => getWarrantyOffers().then(data => storeAndPublish(SubscriptionDataMap.WARRANTY_OFFERS, data)), 3000)
+if(true){
+  const interval = setInterval(() => getWarrantyOffers().then(data => storeAndPublish(SubscriptionDataMap.WARRANTY_OFFERS, data)), 3000)
+  setTimeout(() => unsubscribe(SubscriptionDataMap.WARRANTY_OFFERS, subscriptions[SubscriptionDataMap.WARRANTY_OFFERS].entries().next().value[0]), 10000)
+  setTimeout(() => clearInterval(interval), 15000)
+}
