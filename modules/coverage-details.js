@@ -1,6 +1,8 @@
-export default class CoverageDetails extends HTMLElement {
+import BaseComponent from '/base-component.js'
+
+export default class CoverageDetails extends BaseComponent {
   constructor(...args){
-    const self = super(...args)
+    const self = super('modules/coverage-details.css', ...args)
     this.expanded = false
     this.boundClickHandler = this.clickHandler.bind(this)
   }

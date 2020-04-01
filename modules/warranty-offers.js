@@ -1,3 +1,5 @@
+import BaseComponent from '/base-component.js'
+
 import {
   SubscriptionDataMap,
   subscribe,
@@ -7,9 +9,9 @@ import {
 import Offer from '/modules/offer.js'
 customElements.define('offer-item', Offer)
 
-export default class WarrantyOffers extends HTMLElement {
-  constructor(){
-    const self = super()
+export default class WarrantyOffers extends BaseComponent {
+  constructor(...args){
+    const self = super('modules/warranty-offers.css', ...args)
     this.boundRender = this.render.bind(this)
     return self
   }
@@ -20,6 +22,7 @@ export default class WarrantyOffers extends HTMLElement {
 
   disconnectedCallback() {
     unsubscribe(SubscriptionDataMap.WARRANTY_OFFERS, this.boundRender)
+    this.removeStyles()
   }
 
   count = 0
@@ -33,9 +36,11 @@ export default class WarrantyOffers extends HTMLElement {
   }
 
   createHeader() {
-    const el = document.createElement('header')
-    el.innerText = 'Warranty Info'
-    return el
+    const header = document.createElement('header')
+    const heading = document.createElement('h2')
+    heading.innerText = 'Warranty Offers'
+    header.append(heading)
+    return header
   }
 
   createMain(offers) {
@@ -53,6 +58,7 @@ export default class WarrantyOffers extends HTMLElement {
 
   createOffers(offers) {
     const list = document.createElement('ul')
+    list.className = 'offer-list'
     offers.forEach(item => {
       const offer = document.createElement('offer-item')
       offer.setAttribute('data', JSON.stringify(item))

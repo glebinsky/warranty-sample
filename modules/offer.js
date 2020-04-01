@@ -1,7 +1,14 @@
+import BaseComponent from '/base-component.js'
+
 import CoverageDetails from '/modules/coverage-details.js'
 customElements.define('coverage-details', CoverageDetails)
 
-export default class Offer extends HTMLElement {
+export default class Offer extends BaseComponent {
+  constructor(...args) {
+    const self = super('modules/offer.css', ...args)
+    return self
+  }
+
   connectedCallback() {
     this.data = JSON.parse(this.getAttribute('data'))
     this.innerHTML = null

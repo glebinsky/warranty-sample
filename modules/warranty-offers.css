@@ -1,0 +1,15 @@
+mulberry-app
+  warranty-offers {
+    display: block;
+  }
+
+mulberry-app
+  warranty-offers header {
+    text-align: center;
+  }
+
+mulberry-app
+  warranty-offers .offer-list {
+    display: flex;
+    flex-direction: row;
+  }
