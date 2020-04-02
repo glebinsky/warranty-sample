@@ -65,10 +65,12 @@ export default class WarrantyOffers extends BaseComponent {
       list.append(offer)
     })
 
-    for(let i = 0; i < 3; i++){
-      const spacer = document.createElement('li')
-      spacer.setAttribute('aria-hidden', true)
-      list.append(spacer)
+    if(offers.length > 2) {
+      for(let i = 0; i < 3; i++){
+        const spacer = document.createElement('li')
+        spacer.setAttribute('aria-hidden', true)
+        list.append(spacer)
+      }
     }
 
     return list
