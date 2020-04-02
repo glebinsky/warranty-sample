@@ -1,3 +1,7 @@
+:root {
+  --mulberry-purple: #7a16c4;
+}
+
 mulberry-app {
   display: flex;
   flex-direction: column;

@@ -64,6 +64,13 @@ export default class WarrantyOffers extends BaseComponent {
       offer.setAttribute('data', JSON.stringify(item))
       list.append(offer)
     })
+
+    for(let i = 0; i < 3; i++){
+      const spacer = document.createElement('li')
+      spacer.setAttribute('aria-hidden', true)
+      list.append(spacer)
+    }
+
     return list
   }
 }

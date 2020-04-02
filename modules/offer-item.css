@@ -1,16 +1,58 @@
 mulberry-app
   offer-item {
-    background-color: #7a16c4;
+    background-color: var(--mulberry-purple);
     color: white;
-    width: 280px;
-    height: 200px;
-    padding: 12px;
-    margin: 7px;
     border-radius: 17px;
     align-items: center;
     display: flex;
     flex-direction: column;
   }
+
+mulberry-app
+  offer-item,
+mulberry-app
+  li[aria-hidden="true"] {
+    padding: 12px;
+    margin: 7px;
+  }
+
+@media (max-width: 540px) {
+  mulberry-app
+    offer-item,
+  mulberry-app
+    li[aria-hidden="true"] {
+      flex: 1 1 240px;
+      min-width: 240px;
+    }
+}
+
+@media (min-width: 541px) and (max-width: 800px) {
+  mulberry-app
+    offer-item,
+  mulberry-app
+    li[aria-hidden="true"] {
+      flex: 1 1 228px;
+    }
+}
+
+@media (min-width: 801px) and (max-width: 923px) {
+  mulberry-app
+    offer-item,
+  mulberry-app
+    li[aria-hidden="true"] {
+      flex: 1 1 300px;
+    }
+}
+
+@media (min-width: 924px) {
+  mulberry-app
+    offer-item,
+  mulberry-app
+    li[aria-hidden="true"] {
+      flex: 1 1 228px;
+    }
+
+}
 
 mulberry-app
   offer-item .offer-header {

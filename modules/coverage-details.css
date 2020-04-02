@@ -53,8 +53,8 @@ mulberry-app
 mulberry-app
   coverage-details .long-list-modal {
     background-color: white;
-    border-radius: 12px;
-    border: thick solid purple;
+    border-radius: 6px;
+    border: thick solid var(--mulberry-purple);
     color: black;
     margin: 0 auto;
     padding: 8px;
