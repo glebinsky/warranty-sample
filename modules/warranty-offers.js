@@ -6,8 +6,8 @@ import {
   unsubscribe
 } from '/store.js'
 
-import Offer from '/modules/offer.js'
-customElements.define('offer-item', Offer)
+import OfferItem from '/modules/offer-item.js'
+customElements.define('offer-item', OfferItem)
 
 export default class WarrantyOffers extends BaseComponent {
   constructor(...args){

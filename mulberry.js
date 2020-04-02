@@ -14,23 +14,20 @@ class Mulberry extends BaseComponent {
     this.append(document.createElement('warranty-offers'))
   }
 
+  disconnectedCallback() {
+    this.removeAllMulberryStyles()
+  }
+
   createHeader() {
     const header = document.createElement('h1')
     header.innerText = 'Mulberry'
     return header
   }
+
+  removeAllMulberryStyles() {
+    document.head.querySelectorAll('.mulberry-link').forEach(link => link.remove())
+  }
+
 }
 
 customElements.define('mulberry-app', Mulberry)
-
-// import { post } from './modules/fetch.js'
-
-// const mockData = {
-//   product: {
-//     "id":"SOFA-36",
-//     "price":"300.99",
-//     "title":"Amazing Blue Sofa",
-//     "mulberry_category":"furniture"
-//   }
-// }
-// post('https://partner-staging.getmulberry.com/api/get_personalized_warranty', { ...mockData })

@@ -73,8 +73,8 @@ function getProduct() {
   })
 }
 
-if(false){
-  const interval = setTimeout(() => getWarrantyOffers().then(data => storeAndPublish(SubscriptionDataMap.WARRANTY_OFFERS, [...data,...data])), 3000)
+if(true){
+  const interval = setTimeout(() => getWarrantyOffers().then(data => storeAndPublish(SubscriptionDataMap.WARRANTY_OFFERS, [...data,...data,...data,...data,...data])), 1000)
   setTimeout(() => unsubscribe(SubscriptionDataMap.WARRANTY_OFFERS, subscriptions[SubscriptionDataMap.WARRANTY_OFFERS].entries().next().value[0]), 10000)
   // setTimeout(() => clearInterval(interval), 15000)
 }

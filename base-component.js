@@ -1,15 +1,11 @@
 export default class BaseComponent extends HTMLElement {
   constructor(stylesheetPath, ...args){
     const self = super(...args)
-    this.addStyles(stylesheetPath)
+    this.addComponentStyles(stylesheetPath)
     return self
   }
 
-  disconnectedCallback() {
-    this.removeStyles()
-  }
-
-  addStyles(stylesheetPath) {
+  addComponentStyles(stylesheetPath) {
     this.stylesLink = document.head.querySelector(`link[rel="stylesheet"][href="${stylesheetPath}"]`)
     if(this.stylesLink) {
       return
@@ -18,12 +14,7 @@ export default class BaseComponent extends HTMLElement {
     this.stylesLink = document.createElement('link')
     this.stylesLink.rel = 'stylesheet'
     this.stylesLink.href = stylesheetPath
+    this.stylesLink.className = 'mulberry-link'
     document.head.append(this.stylesLink)
-  }
-
-  removeStyles() {
-    if(document.querySelector(this.localName)) return
-
-    document.head.removeChild(this.stylesLink)
   }
 }

@@ -1,16 +1,35 @@
 mulberry-app {
-  display: block;
-  height: 95.6vh;
+  display: flex;
+  flex-direction: column;
   background-color: white;
-  padding: 10px;
-  margin: 10px;
+  padding: 1vh 1vw;
+  height: 98vh;
+  font-family: monospace;
+  font-size: 1.3em;
 }
 
 mulberry-app > h1 {
   margin-top: 0;
+  flex: none;
+}
+
+mulberry-app ul,
+mulberry-app body,
+mulberry-app h1,
+mulberry-app h2,
+mulberry-app h3,
+mulberry-app h4,
+mulberry-app h5 {
+  margin: 0;
+}
+
+
+mulberry-app ul {
+  padding: 0;
+  list-style: none;
 }
 
 body {
   margin: 0;
-  background-color: #7a16c4;
+  background-color: black;
 }

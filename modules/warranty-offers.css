@@ -1,15 +1,32 @@
 mulberry-app
   warranty-offers {
-    display: block;
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 8px;
   }
 
 mulberry-app
   warranty-offers header {
     text-align: center;
+    margin-bottom: 6px;
+    flex: none;
   }
 
 mulberry-app
+  warranty-offers main {
+    flex: auto;
+    overflow: hidden;
+  }
+ 
+mulberry-app
   warranty-offers .offer-list {
+    width: 99vw;
+    max-height: 100%;
+    overflow-y: scroll;
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
+    position: relative;
+    left: -7px;
   }
