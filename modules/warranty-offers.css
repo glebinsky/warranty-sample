@@ -1,32 +1,44 @@
-mulberry-app
-  warranty-offers {
-    flex: auto;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    margin-top: 8px;
-  }
+warranty-offers {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
-mulberry-app
-  warranty-offers header {
-    text-align: center;
-    margin-bottom: 6px;
-    flex: none;
-  }
+warranty-offers h2 {
+  text-align: center;
+  margin-bottom: 17px;
+  flex: none;
+  letter-spacing: .1em;
+  font-size: 2em;
+}
 
-mulberry-app
-  warranty-offers main {
-    flex: auto;
-    overflow: hidden;
-  }
- 
-mulberry-app
-  warranty-offers .offer-list {
-    width: 99vw;
-    max-height: 100%;
-    overflow-y: scroll;
-    display: flex;
-    flex-flow: row wrap;
-    position: relative;
-    left: -7px;
-  }
+warranty-offers .offer-list {
+  max-height: 100%;
+  overflow-y: scroll;
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 7px;
+}
+
+warranty-offers .offer-list > li {
+  margin: 0 5px 7px;
+  border-color: #699E30;
+  border-width: 11px;
+  border-style: solid;
+}
+
+warranty-offers .offer-list > li:nth-child(2n) {
+  border-color: #2087BB;
+}
+
+warranty-offers .offer-list > li,
+warranty-offers .offer-list > li:nth-child(2n) {
+  border-radius: 17px;
+}
+
+warranty-offers hr {
+  border: 8px solid var(--mulberry-purple);
+  border-radius: 8px;
+  margin: 0;
+}

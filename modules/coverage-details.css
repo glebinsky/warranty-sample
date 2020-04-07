@@ -1,71 +1,44 @@
-mulberry-app
-  coverage-details {
-    width: 94%;
-    margin-top: 14px;
-  }
+coverage-details {
+  width: 94%;
+  margin-top: 14px;
+}
 
-mulberry-app
-  coverage-details .collapse-icon,
-mulberry-app
-  coverage-details .expand-icon {
-    text-transform: uppercase;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 1.3em;
-    line-height: 1em;
-    width: 22px;
-    height: 22px;
-    color: red;
-    display: block;
-    text-align: center;
- }
+coverage-details .short-list,
+coverage-details .long-list {
+  display: none;
+  list-style-type: disc;
+}
 
-mulberry-app
-  coverage-details .expand-icon {
-    border-radius: 13px;
-    background-color: white;
-    margin: 9px auto 0;
-    border: 1px solid black;
-  }
+coverage-details .expanded .short-list,
+coverage-details .expanded .long-list {
+  display: block;
+}
 
-mulberry-app
-  coverage-details .collapse-icon {
-    float: right;
-  }
+coverage-details .collapse-icon,
+coverage-details .expand-icon {
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 1.3em;
+  line-height: 1em;
+  width: 22px;
+  height: 22px;
+  display: block;
+  text-align: center;
+}
 
-mulberry-app
-  coverage-details .collapse-icon:hover,
-mulberry-app
-  coverage-details .expand-icon:hover {
-    cursor: pointer;
-  }
+coverage-details .expand-icon {
+  border-radius: 13px;
+  background-color: white;
+  margin: 9px auto 0;
+  border: 1px solid black;
+}
 
-mulberry-app
-  coverage-details .long-list-wrapper {
-    background-color: rgba(117, 190, 218, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-  }
+coverage-details .collapse-icon {
+  float: right;
+}
 
-mulberry-app
-  coverage-details .long-list-modal {
-    background-color: white;
-    border-radius: 6px;
-    border: thick solid var(--mulberry-purple);
-    color: black;
-    margin: 0 auto;
-    padding: 8px;
-    position: relative;
-    top: 31vh;
-    max-width: 90vw;
-    min-width: 300px;
-    width: 500px;
-  }
-
-mulberry-app
-  coverage-details .long-list-modal .long-list {
-    margin-top: 22px;
-  }
+coverage-details .collapse-icon:hover,
+coverage-details .expand-icon:hover {
+  cursor: pointer;
+}

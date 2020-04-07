@@ -1,70 +1,52 @@
-mulberry-app
-  offer-item {
-    background-color: var(--mulberry-purple);
-    color: white;
-    border-radius: 17px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
+offer-item {
+  display: block;
+  padding: 12px;
+}
 
-mulberry-app
-  offer-item,
-mulberry-app
-  li[aria-hidden="true"] {
-    padding: 12px;
-    margin: 7px;
-  }
+offer-item section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+.offer-item-spacer {
+  border-color: transparent;
+}
 
 @media (max-width: 540px) {
-  mulberry-app
-    offer-item,
-  mulberry-app
-    li[aria-hidden="true"] {
-      flex: 1 1 240px;
-      min-width: 240px;
-    }
+  offer-item,
+  .offer-item-spacer {
+    flex: 1 1 240px;
+    min-width: 240px;
+  }
 }
 
 @media (min-width: 541px) and (max-width: 700px) {
-  mulberry-app
-    offer-item,
-  mulberry-app
-    li[aria-hidden="true"] {
-      flex: 1 1 228px;
-    }
+  offer-item,
+  .offer-item-spacer {
+    flex: 1 1 228px;
+  }
 }
 
 @media (min-width: 701px) and (max-width: 923px) {
-  mulberry-app
-    offer-item,
-  mulberry-app
-    li[aria-hidden="true"] {
-      flex: 1 1 240px;
-    }
+  offer-item,
+  .offer-item-spacer {
+    flex: 1 1 240px;
+  }
 }
 
 @media (min-width: 924px) {
-  mulberry-app
-    offer-item,
-  mulberry-app
-    li[aria-hidden="true"] {
-      flex: 1 1 228px;
-    }
-
-}
-
-mulberry-app
-  offer-item .offer-header {
-    width: 94%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  offer-item,
+  .offer-item-spacer {
+    flex: 1 1 228px;
   }
 
-mulberry-app
-  offer-item .service-type,
-mulberry-app
-  offer-item .service-type {
-    margin-top: 20px;
-  } 
+}
+*/
+offer-item .offer-header {
+  width: 94%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

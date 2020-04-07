@@ -11,43 +11,48 @@ export default class OfferItem extends BaseComponent {
 
   connectedCallback() {
     this.data = JSON.parse(this.getAttribute('data'))
-    this.render()
+
+    this.section = document.createElement('section')
+    this.renderHeader()
+    this.renderCoverageDetails()
+
+    this.innerHTML = null
+    this.append(this.section)
   }
 
-  render() {
+  renderCoverageDetails() {
+    const { coverage_details } = this.data
+
+    const coverageDetails = document.createElement('coverage-details')
+    coverageDetails .setAttribute('data', JSON.stringify(coverage_details))
+    this.section.append(coverageDetails)
+  }
+
+  renderHeader() {
     const {
       duration_months,
       cost,
       service_type,
-      coverage_details
     } = this.data
 
-    const fragment = new DocumentFragment()
     const header = document.createElement('div')
     header.className = 'offer-header'
 
     const duration = document.createElement('h3')
     duration.className = 'duration'
-    duration.innerText = `${duration_months} Month`
+    duration.innerText = `${duration_months} Months`
     header.append(duration)
+
+    const serviceType = document.createElement('h3')
+    serviceType.className = 'service-type'
+    serviceType.innerText = service_type
+    header.append(serviceType)
 
     const price = document.createElement('h3')
     price.className = 'price'
     price.innerText = `$${cost}`
     header.append(price)
 
-    fragment.append(header)
-
-    const serviceType = document.createElement('h3')
-    serviceType.className = 'service-type'
-    serviceType.innerText = service_type
-    fragment.append(serviceType)
-
-    const coverageDetails = document.createElement('coverage-details')
-    coverageDetails .setAttribute('data', JSON.stringify(coverage_details))
-    fragment.append(coverageDetails)
-
-    this.innerHTML = null
-    this.append(fragment)
+    this.section.prepend(header)
   }
 }

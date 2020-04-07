@@ -3,74 +3,51 @@ import BaseComponent from '/base-component.js'
 export default class CoverageDetails extends BaseComponent {
   constructor(...args){
     const self = super('modules/coverage-details.css', ...args)
-    this.boundExpand = this.expand.bind(this)
-    this.boundCollapse = this.collapse.bind(this)
   }
 
   connectedCallback() {
-    this.data = JSON.parse(this.getAttribute('data'))
-    this.renderShortList()
+    const data = JSON.parse(this.getAttribute('data'))
+    const [details] = data
+
+    this.article = document.createElement('article')
+    this.renderIcon()
+
+    this.innerHTML = null
+    this.append(this.article)
+
+    setTimeout(() => {
+      this.renderDetailsList(details.short, 'short-list')
+      this.renderDetailsList(details.long, 'long-list')
+    }, 1000)
   }
 
-  renderShortList() {
-    const [details] = this.data
-    const fragment = new DocumentFragment()
-
-    const detailsList = this.createDetailsList(details.short)
-    detailsList.className = 'short-list'
-    fragment.append(detailsList)
-
+  renderIcon() {
     const toggle = document.createElement('i')
+    toggle.addEventListener('click', this.toggleExpand.bind(this))
+
     toggle.className = 'expand-icon'
     toggle.innerText = '+'
 
-    toggle.addEventListener('click', this.boundExpand)
-    fragment.append(toggle)
-
-    this.innerHTML = null
-    this.append(fragment)
+    this.article.append(toggle)
   }
 
-  renderLongListModal() {
-    const [details] = this.data
-
-    const longListModal = document.createElement('div')
-    longListModal.className = 'long-list-modal'
-    longListModal.addEventListener('click', e => e.stopPropagation())
-
-    const toggle = document.createElement('i')
-    toggle.className = 'collapse-icon'
-    toggle.innerText = 'X'
-    toggle.addEventListener('click', this.boundCollapse)
-    longListModal.append(toggle)
-
-    const detailsList = this.createDetailsList(details.long)
-    detailsList.className = 'long-list'
-    longListModal.append(detailsList)
-
-    this.longListWrapper = document.createElement('div')
-    this.longListWrapper.className = 'long-list-wrapper'
-    this.longListWrapper.addEventListener('click', this.boundCollapse)
-    this.longListWrapper.append(longListModal)
-
-    this.append(this.longListWrapper)
-  }
-
-  createDetailsList(list) {
+  renderDetailsList(list, className) {
     const listWrapper = document.createElement('ul')
+    listWrapper.className = className
     list.forEach(detail => {
       const listItem = document.createElement('li')
       listItem.innerText = detail
       listWrapper.append(listItem)
     })
-    return listWrapper
+    this.article.prepend(listWrapper)
   }
 
-  expand() {
-    this.renderLongListModal()
-  }
-
-  collapse() {
-    this.longListWrapper.remove()
+  toggleExpand() {
+    const className = 'expanded'
+    if (this.article.className === className) {
+      this.article.className = ''
+    } else {
+      this.article.className = className
+    }
   }
 }

@@ -28,51 +28,46 @@ export default class WarrantyOffers extends BaseComponent {
   count = 0
   render(data) {
     console.log(this.count++)
-    const fragment = new DocumentFragment()
-    fragment.append(this.createHeader())
-    fragment.append(this.createMain(data))
+    this.fragment = new DocumentFragment()
+    this.createTitle()
+    this.createOffers(data)
     this.innerHTML = null
-    this.append(fragment)
+    this.append(this.fragment)
   }
 
-  createHeader() {
-    const header = document.createElement('header')
+  createTitle() {
     const heading = document.createElement('h2')
     heading.innerText = 'Warranty Offers'
-    header.append(heading)
-    return header
-  }
-
-  createMain(offers) {
-    const main = document.createElement('main')
-    if(!offers.length) {
-      const p = document.createElement('p')
-      p.innerText = 'No offers available'
-      main.append(p)
-      return main
-    }
-
-    main.append(this.createOffers(offers))
-    return main
+    this.fragment.prepend(heading)
+    const hr = document.createElement('hr')
+    heading.insertAdjacentElement('afterEnd', hr)
   }
 
   createOffers(offers) {
+    if(!offers.length) {
+      const p = document.createElement('p')
+      p.innerText = 'No offers available'
+      this.fragment.append(p)
+      return
+    }
+
     const list = document.createElement('ul')
     list.className = 'offer-list'
     offers.forEach(item => {
+      const li = document.createElement('li')
       const offer = document.createElement('offer-item')
       offer.setAttribute('data', JSON.stringify(item))
-      list.append(offer)
+      li.append(offer)
+      list.append(li)
     })
-
-    if(offers.length > 2) {
-      for(let i = 0; i < 3; i++){
-        const spacer = document.createElement('li')
-        spacer.setAttribute('aria-hidden', true)
-        list.append(spacer)
-      }
+/*
+    for(let i = 0; ((i + offers.length) % 3) > 0; i++){
+      const spacer = document.createElement('li')
+      spacer.className = 'offer-item-spacer'
+      spacer.setAttribute('aria-hidden', true)
+      list.append(spacer)
     }
-
-    return list
+*/
+    this.fragment.append(list)
   }
 }

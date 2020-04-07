@@ -1,39 +1,59 @@
-:root {
-  --mulberry-purple: #7a16c4;
-}
-
-mulberry-app {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  padding: 1vh 1vw;
-  height: 98vh;
-  font-family: monospace;
-  font-size: 1.3em;
-}
-
-mulberry-app > h1 {
-  margin-top: 0;
-  flex: none;
-}
-
-mulberry-app ul,
-mulberry-app body,
-mulberry-app h1,
-mulberry-app h2,
-mulberry-app h3,
-mulberry-app h4,
-mulberry-app h5 {
+ul,
+body,
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
 }
 
-
-mulberry-app ul {
+ul {
   padding: 0;
   list-style: none;
 }
 
+
+:root {
+  --mulberry-purple: #3D0625;
+}
+
 body {
-  margin: 0;
-  background-color: black;
+  background-color: white;
+  font-size: 1.3em;
+  font-family: verdana;
+  color: #1E2023;
+}
+
+main,
+footer,
+header {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+header {
+  height: 7vh;
+}
+
+header h1 {
+  color: var(--mulberry-purple);
+  font-size: 2.3em;
+  letter-spacing: .1em;
+}
+
+footer {
+  height: 7vh;
+}
+
+footer section {
+  display: block;
+  background-color: var(--mulberry-purple);
+  height: 100%;
+  border-radius: 8px 8px 4px 4px;
+}
+
+main {
+  height: 86vh;
 }
