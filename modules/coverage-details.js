@@ -9,8 +9,7 @@ export default class CoverageDetails extends BaseComponent {
 
   connectedCallback() {
     this.article = document.createElement('article')
-    this.article.style.height = 0
-    this.article.style.overflow = 'hidden'
+    this.setCollapsedStyles()
 
     const data = JSON.parse(this.getAttribute('data'))
     const [details] = data
@@ -36,10 +35,22 @@ export default class CoverageDetails extends BaseComponent {
   expandDetailsList(mutationList, observer) {
     mutationList.forEach(mutation => {
       if(this.hasAttribute('expanded')) {
-        this.article.style.height = this.longList.clientHeight + this.shortList.clientHeight + 'px'
+        this.setExpandedStyles()
       } else {
-        this.article.style.height = 0
+        this.setCollapsedStyles()
       }
     })
+  }
+
+  setExpandedStyles() {
+    this.article.style.height = this.longList.clientHeight + this.shortList.clientHeight + 'px'
+    this.article.style.padding = '5px 8px'
+    this.article.style.color = '#3D0625'
+  }
+
+  setCollapsedStyles() {
+    this.article.style.height = 0
+    this.article.style.padding = 0
+    this.article.style.color = 'white'
   }
 }

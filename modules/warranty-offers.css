@@ -23,13 +23,11 @@ warranty-offers .offer-list {
 
 warranty-offers .offer-list > li {
   margin: 0 5px 7px;
-  border-color: #699E30;
-  border-width: 11px;
-  border-style: solid;
+  background-color: #41621e;
 }
 
 warranty-offers .offer-list > li:nth-child(2n) {
-  border-color: #2087BB;
+  background-color: #165f83;
 }
 
 warranty-offers .offer-list > li,

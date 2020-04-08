@@ -29,8 +29,27 @@ main,
 footer,
 header {
   max-width: 1024px;
+  min-width: 300px;
   margin: 0 auto;
   padding: 0 12px;
+}
+
+@media (max-width: 540px) {
+  body {
+    font-size: 1.1em;
+  }
+
+  main,
+  footer,
+  header {
+    padding: 0 6px;
+  }
+}
+
+@media (min-width: 541px) and (max-width: 719px) {
+  body {
+    font-size: 1.2em;
+  }
 }
 
 header {

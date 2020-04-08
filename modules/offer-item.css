@@ -1,6 +1,5 @@
 offer-item {
   display: block;
-  padding: 12px;
 }
 
 offer-item:hover {
@@ -11,49 +10,51 @@ offer-item section {
   align-items: center;
   display: flex;
   flex-direction: column;
+  padding: 16px 10px 10px;
 }
-
-/*
-.offer-item-spacer {
-  border-color: transparent;
-}
-
-@media (max-width: 540px) {
-  offer-item,
-  .offer-item-spacer {
-    flex: 1 1 240px;
-    min-width: 240px;
-  }
-}
-
-@media (min-width: 541px) and (max-width: 700px) {
-  offer-item,
-  .offer-item-spacer {
-    flex: 1 1 228px;
-  }
-}
-
-@media (min-width: 701px) and (max-width: 923px) {
-  offer-item,
-  .offer-item-spacer {
-    flex: 1 1 240px;
-  }
-}
-
-@media (min-width: 924px) {
-  offer-item,
-  .offer-item-spacer {
-    flex: 1 1 228px;
-  }
-
-}
-*/
 
 offer-item .offer-header {
   width: 94%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: white;
+}
+
+:root offer-item {
+  --header-padding: 8px;
+}
+
+offer-item .duration {
+  padding-left: var(--header-padding);
+}
+
+offer-item .price {
+  padding-right: var(--header-padding);
+}
+
+@media (max-width: 542px) {
+  offer-item .offer-header {
+    flex-wrap: wrap;
+  }
+
+  offer-item .duration {
+    padding-left: 0;
+    order: 1;
+    flex-basis: 46%;
+  }
+
+  offer-item .service-type {
+    order: 3;
+    padding-top: var(--header-padding);
+  }
+
+  offer-item .price {
+    padding-right: 0;
+    order: 2;
+    flex-basis: 46%;
+    text-align: right;
+  }
 }
 
 offer-item .icon {
