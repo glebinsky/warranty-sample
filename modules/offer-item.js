@@ -6,6 +6,8 @@ customElements.define('coverage-details', CoverageDetails)
 export default class OfferItem extends BaseComponent {
   constructor(...args) {
     const self = super('modules/offer-item.css', ...args)
+    this.observer = new MutationObserver(this.toggleCoverageDetails.bind(this))
+    this.observer.observe(this, { attributes: true })
     return self
   }
 
@@ -13,19 +15,40 @@ export default class OfferItem extends BaseComponent {
     this.data = JSON.parse(this.getAttribute('data'))
 
     this.section = document.createElement('section')
+
     this.renderHeader()
     this.renderCoverageDetails()
+    this.renderToggleIcon()
 
     this.innerHTML = null
     this.append(this.section)
   }
 
+  toggleCoverageDetails(mutationList, observer) {
+    mutationList.forEach(mutation => {
+      if(this.hasAttribute('expanded')) {
+        this.coverageDetails.toggleAttribute('expanded', true)
+      } else {
+        this.coverageDetails.toggleAttribute('expanded', false)
+      }
+    })
+  }
+
+  renderToggleIcon() {
+    this.toggleIcon = document.createElement('i')
+
+    this.toggleIcon.className = 'icon'
+    this.toggleIcon.innerText = '^'
+
+    this.section.append(this.toggleIcon)
+  }
+
   renderCoverageDetails() {
     const { coverage_details } = this.data
 
-    const coverageDetails = document.createElement('coverage-details')
-    coverageDetails .setAttribute('data', JSON.stringify(coverage_details))
-    this.section.append(coverageDetails)
+    this.coverageDetails = document.createElement('coverage-details')
+    this.coverageDetails .setAttribute('data', JSON.stringify(coverage_details))
+    this.section.append(this.coverageDetails)
   }
 
   renderHeader() {

@@ -3,32 +3,22 @@ import BaseComponent from '/base-component.js'
 export default class CoverageDetails extends BaseComponent {
   constructor(...args){
     const self = super('modules/coverage-details.css', ...args)
+    this.observer = new MutationObserver(this.expandDetailsList.bind(this))
+    this.observer.observe(this, { attributes: true })
   }
 
   connectedCallback() {
+    this.article = document.createElement('article')
+    this.article.style.height = 0
+    this.article.style.overflow = 'hidden'
+
     const data = JSON.parse(this.getAttribute('data'))
     const [details] = data
-
-    this.article = document.createElement('article')
-    this.renderIcon()
+    this.shortList = this.renderDetailsList(details.short, 'short-list')
+    this.longList = this.renderDetailsList(details.long, 'long-list')
 
     this.innerHTML = null
     this.append(this.article)
-
-    setTimeout(() => {
-      this.renderDetailsList(details.short, 'short-list')
-      this.renderDetailsList(details.long, 'long-list')
-    }, 1000)
-  }
-
-  renderIcon() {
-    const toggle = document.createElement('i')
-    toggle.addEventListener('click', this.toggleExpand.bind(this))
-
-    toggle.className = 'expand-icon'
-    toggle.innerText = '+'
-
-    this.article.append(toggle)
   }
 
   renderDetailsList(list, className) {
@@ -40,14 +30,16 @@ export default class CoverageDetails extends BaseComponent {
       listWrapper.append(listItem)
     })
     this.article.prepend(listWrapper)
+    return listWrapper
   }
 
-  toggleExpand() {
-    const className = 'expanded'
-    if (this.article.className === className) {
-      this.article.className = ''
-    } else {
-      this.article.className = className
-    }
+  expandDetailsList(mutationList, observer) {
+    mutationList.forEach(mutation => {
+      if(this.hasAttribute('expanded')) {
+        this.article.style.height = this.longList.clientHeight + this.shortList.clientHeight + 'px'
+      } else {
+        this.article.style.height = 0
+      }
+    })
   }
 }

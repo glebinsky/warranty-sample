@@ -12,17 +12,17 @@ customElements.define('offer-item', OfferItem)
 export default class WarrantyOffers extends BaseComponent {
   constructor(...args){
     const self = super('modules/warranty-offers.css', ...args)
-    this.boundRender = this.render.bind(this)
     return self
   }
 
   connectedCallback() {
-    subscribe(SubscriptionDataMap.WARRANTY_OFFERS, this.boundRender)
+    subscribe(SubscriptionDataMap.WARRANTY_OFFERS, this.render.bind(this))
   }
 
   disconnectedCallback() {
-    unsubscribe(SubscriptionDataMap.WARRANTY_OFFERS, this.boundRender)
+    unsubscribe(SubscriptionDataMap.WARRANTY_OFFERS, this.render.bind(this))
     this.removeStyles()
+    this.offerList.removeEventListener('click', this.toggleExpandedOfferList.bind(this))
   }
 
   count = 0
@@ -51,23 +51,24 @@ export default class WarrantyOffers extends BaseComponent {
       return
     }
 
-    const list = document.createElement('ul')
-    list.className = 'offer-list'
+    this.offerList = document.createElement('ul')
+    this.offerList.className = 'offer-list'
     offers.forEach(item => {
       const li = document.createElement('li')
       const offer = document.createElement('offer-item')
       offer.setAttribute('data', JSON.stringify(item))
       li.append(offer)
-      list.append(li)
+      this.offerList.append(li)
     })
-/*
-    for(let i = 0; ((i + offers.length) % 3) > 0; i++){
-      const spacer = document.createElement('li')
-      spacer.className = 'offer-item-spacer'
-      spacer.setAttribute('aria-hidden', true)
-      list.append(spacer)
-    }
-*/
-    this.fragment.append(list)
+
+    this.fragment.append(this.offerList)
+
+    this.offerList.addEventListener('click', this.toggleExpandedOfferList.bind(this))
   }
+
+  toggleExpandedOfferList(ev) {
+    const item = ev.target.closest('offer-item')
+    item.toggleAttribute('expanded')
+  }
+
 }

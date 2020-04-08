@@ -3,42 +3,34 @@ coverage-details {
   margin-top: 14px;
 }
 
+coverage-details article {
+  transition: height 0.8s ease 0.2s;
+}
+
 coverage-details .short-list,
 coverage-details .long-list {
-  display: none;
   list-style-type: disc;
+  list-style-position: inside;
 }
 
-coverage-details .expanded .short-list,
-coverage-details .expanded .long-list {
-  display: block;
+@media (max-width: 719px) {
+  coverage-details .long-list {
+    height: 0;
+    overflow: hidden;
+  }
+
+  coverage-details .short-list {
+    height: auto;
+  }
 }
 
-coverage-details .collapse-icon,
-coverage-details .expand-icon {
-  text-transform: uppercase;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 1.3em;
-  line-height: 1em;
-  width: 22px;
-  height: 22px;
-  display: block;
-  text-align: center;
-}
+@media (min-width: 720px) {
+  coverage-details .long-list {
+    height: auto;
+  }
 
-coverage-details .expand-icon {
-  border-radius: 13px;
-  background-color: white;
-  margin: 9px auto 0;
-  border: 1px solid black;
-}
-
-coverage-details .collapse-icon {
-  float: right;
-}
-
-coverage-details .collapse-icon:hover,
-coverage-details .expand-icon:hover {
-  cursor: pointer;
+  coverage-details .short-list {
+    height: 0;
+    overflow: hidden;
+  }
 }
