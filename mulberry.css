@@ -20,7 +20,7 @@ ul {
 
 body {
   background-color: white;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-family: verdana;
   color: #1E2023;
 }
@@ -34,6 +34,36 @@ header {
   padding: 0 12px;
 }
 
+header {
+  height: 7vh;
+}
+
+header h1 {
+  color: var(--mulberry-purple);
+  font-size: 2em;
+  letter-spacing: .1em;
+}
+
+main {
+  height: 91vh;
+}
+
+footer {
+  height: 2vh;
+  display: flex;
+  flex-direction: column;
+}
+
+hr {
+  border: 8px solid var(--mulberry-purple);
+  border-radius: 8px;
+  margin: 0;
+}
+
+footer hr {
+  margin-top: auto;
+}
+
 @media (max-width: 540px) {
   body {
     font-size: 1.1em;
@@ -44,35 +74,73 @@ header {
   header {
     padding: 0 6px;
   }
-}
 
-@media (min-width: 541px) and (max-width: 719px) {
-  body {
-    font-size: 1.2em;
+  header {
+    height: 6vh;
+  }
+
+  main {
+    height: 92vh;
   }
 }
 
-header {
-  height: 7vh;
+@media (max-width: 420px) {
+  body {
+    font-size: 1em;
+  }
+
+  header {
+    height: 5vh;
+  }
+
+  main {
+    height: 93vh;
+  }
+
+  @media (max-height: 740px) {
+    header {
+      height: 7vh;
+      font-size: 0.9em;
+    }
+
+    main {
+      height: 90vh;
+    }
+
+    footer {
+      height: 3vh;
+    }
+  }
 }
 
-header h1 {
-  color: var(--mulberry-purple);
-  font-size: 2.3em;
-  letter-spacing: .1em;
+@media (max-height: 400px) {
+  body {
+    font-size: 1em;
+  }
+
+  header {
+    height: 9vh;
+  }
+
+  header h1 {
+    font-size: 1.6em;
+  }
+
+  main {
+    height: 88vh;
+  }
+
+  footer {
+    height: 3vh;
+  }
+
+  hr {
+    border-width: 5px;
+  }
 }
 
-footer {
-  height: 2vh;
-}
-
-footer section {
-  display: block;
-  background-color: var(--mulberry-purple);
-  height: 100%;
-  border-radius: 8px;
-}
-
-main {
-  height: 91vh;
+@media (min-width: 1024px) {
+  body {
+    font-size: 1.3em;
+  }
 }

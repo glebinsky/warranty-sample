@@ -23,6 +23,7 @@ warranty-offers .offer-list {
 
 warranty-offers .offer-list > li {
   margin: 0 5px 7px;
+  border-radius: 17px;
   background-color: #41621e;
 }
 
@@ -30,13 +31,29 @@ warranty-offers .offer-list > li:nth-child(2n) {
   background-color: #165f83;
 }
 
-warranty-offers .offer-list > li,
-warranty-offers .offer-list > li:nth-child(2n) {
-  border-radius: 17px;
+warranty-offers p {
+  text-align: center;
+  font-size: 1.4em;
 }
 
-warranty-offers hr {
-  border: 8px solid var(--mulberry-purple);
-  border-radius: 8px;
-  margin: 0;
+@media (max-height: 420px) {
+  warranty-offers h2 {
+    margin-bottom: 7px;
+    font-size: 1.2em;
+  }
+
+  warranty-offers .offer-list {
+    padding-top: 4px;
+  }
+
+  warranty-offers .offer-list > li {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 719px) {
+  warranty-offers h2 {
+    margin-bottom: 7px;
+    font-size: 1.7em;
+  }
 }

@@ -61,7 +61,7 @@ function getWarrantyOffers() {
 
   return promise.then(() =>
     post('https://partner-staging.getmulberry.com/api/get_personalized_warranty', { product: storeData[SubscriptionDataMap.PRODUCT] })
-    .then(data => [...data, ...data, ...data, ...data])
+    .then(data => [])
   )
 }
 

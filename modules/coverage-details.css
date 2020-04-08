@@ -40,3 +40,9 @@ coverage-details .long-list {
     overflow: hidden;
   }
 }
+
+@media (max-height: 420px) {
+  coverage-details {
+    margin-top: 7px;
+  }
+}
