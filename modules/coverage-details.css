@@ -1,13 +1,19 @@
 coverage-details {
   width: 94%;
-  margin-top: 14px;
+  margin-top: 0;
+  margin-bottom: 6px;
   background-color: white;
   border-radius: 17px;
+  transition: margin-top 1s ease-in-out;
+}
+
+coverage-details[expanded] {
+  margin-top: 10px;
 }
 
 coverage-details article {
   transition-property: height, color, padding;
-  transition-duration: 0.8s, 0.8s, 0.5s;
+  transition-duration: 0.7s, 0.8s, 0.5s;
   transition-timing-function: ease-in-out;
   transition-delay: 0.1s, 0.1s, 0.3s;
   overflow: hidden;
@@ -42,7 +48,7 @@ coverage-details .long-list {
 }
 
 @media (max-height: 420px) {
-  coverage-details {
+  coverage-details[expanded] {
     margin-top: 7px;
   }
 }

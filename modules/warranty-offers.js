@@ -25,9 +25,7 @@ export default class WarrantyOffers extends BaseComponent {
     this.offerList.removeEventListener('click', this.toggleExpandedOfferList.bind(this))
   }
 
-  count = 0
   render(data) {
-    console.log(this.count++)
     this.fragment = new DocumentFragment()
     this.createTitle()
     this.createOffers(data)

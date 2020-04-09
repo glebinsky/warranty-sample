@@ -35,12 +35,13 @@ export default class OfferItem extends BaseComponent {
   }
 
   renderToggleIcon() {
+    const div = document.createElement('div')
+    div.className = 'icon'
     this.toggleIcon = document.createElement('i')
-
-    this.toggleIcon.className = 'icon'
     this.toggleIcon.innerText = '^'
 
-    this.section.append(this.toggleIcon)
+    div.append(this.toggleIcon)
+    this.section.append(div)
   }
 
   renderCoverageDetails() {

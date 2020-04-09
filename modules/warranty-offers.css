@@ -36,24 +36,29 @@ warranty-offers p {
   font-size: 1.4em;
 }
 
-@media (max-height: 420px) {
+@media (max-width: 719px) {
   warranty-offers h2 {
-    margin-bottom: 7px;
-    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-size: 1.7em;
   }
 
-  warranty-offers .offer-list {
-    padding-top: 4px;
-  }
+  @media (max-height: 600px) {
+    warranty-offers h2 {
+      font-size: 1.2em;
+    }
 
-  warranty-offers .offer-list > li {
-    margin-bottom: 5px;
+    warranty-offers .offer-list {
+      padding-top: 4px;
+    }
+
+    warranty-offers .offer-list > li {
+      margin-bottom: 5px;
+    }
   }
 }
 
-@media (max-width: 719px) {
+@media (max-height: 600px) {
   warranty-offers h2 {
     margin-bottom: 7px;
-    font-size: 1.7em;
   }
 }

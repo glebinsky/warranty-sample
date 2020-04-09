@@ -20,7 +20,6 @@ ul {
 
 body {
   background-color: white;
-  font-size: 1.2em;
   font-family: verdana;
   color: #1E2023;
 }
@@ -35,7 +34,7 @@ header {
 }
 
 header {
-  height: 7vh;
+  height: 5vh;
 }
 
 header h1 {
@@ -45,13 +44,19 @@ header h1 {
 }
 
 main {
-  height: 91vh;
+  min-height: 87vh;
 }
 
 footer {
-  height: 2vh;
-  display: flex;
-  flex-direction: column;
+  height: 7vh;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+footer h4 {
+  margin-top: 4px;
 }
 
 hr {
@@ -60,87 +65,72 @@ hr {
   margin: 0;
 }
 
-footer hr {
-  margin-top: auto;
-}
-
-@media (max-width: 540px) {
-  body {
-    font-size: 1.1em;
-  }
-
-  main,
-  footer,
-  header {
-    padding: 0 6px;
-  }
-
-  header {
-    height: 6vh;
-  }
-
-  main {
-    height: 92vh;
-  }
-}
-
-@media (max-width: 420px) {
-  body {
-    font-size: 1em;
-  }
-
-  header {
-    height: 5vh;
-  }
-
-  main {
-    height: 93vh;
-  }
-
-  @media (max-height: 740px) {
-    header {
-      height: 7vh;
-      font-size: 0.9em;
-    }
-
-    main {
-      height: 90vh;
-    }
-
-    footer {
-      height: 3vh;
-    }
-  }
-}
-
-@media (max-height: 400px) {
-  body {
-    font-size: 1em;
-  }
-
-  header {
-    height: 9vh;
-  }
-
+@media (max-width: 420px) and (orientation: portrait) {
   header h1 {
-    font-size: 1.6em;
-  }
-
-  main {
-    height: 88vh;
+    font-size: 1.3em;
   }
 
   footer {
-    height: 3vh;
+    font-size: 1.2em;
+  }
+ 
+  @media (min-height: 600px) {
+    header h1 {
+      font-size: 1.6em;
+    }
+  }
+
+  @media (min-height: 800px) {
+    header h1 {
+      font-size: 1.8em;
+    }
+  }
+}
+
+@media (max-height: 420px) and (orientation: landscape) {
+  header {
+    height: 8vh;
+  }
+
+  header h1 {
+    font-size: 1.3em;
   }
 
   hr {
     border-width: 5px;
   }
+
+  main {
+    min-height: 80vh;
+  }
+
+  footer {
+    height: 11vh;
+  }
+
+  @media (min-width: 600px) {
+    header h1 {
+      font-size: 1.5em;
+    }
+  }
+
+  @media (min-width: 700px) {
+    header h1 {
+      font-size: 1.8em;
+    }
+  }
 }
 
 @media (min-width: 1024px) {
-  body {
-    font-size: 1.3em;
+  @media (orientation: portrait) {
+    header h1 {
+      font-size: 2.4em;
+    }
+  }
+
+  @media (orientation: landscape) {
+    header h1 {
+      font-size: 2.2em;
+    }
   }
 }

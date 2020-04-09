@@ -10,7 +10,7 @@ offer-item section {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 16px 10px 10px;
+  padding: 16px 10px 7px;
 }
 
 offer-item .offer-header {
@@ -33,23 +33,25 @@ offer-item .price {
   padding-right: var(--header-padding);
 }
 
-offer-item .icon {
+offer-item .icon i {
   text-transform: uppercase;
   color: var(--mulberry-purple);
   font-style: normal;
   font-weight: 900;
   font-size: 1.3em;
   line-height: 1em;
-  width: 22px;
-  height: 15px;
+  height: .8em;
   display: block;
   text-align: center;
-  margin: 9px auto 0;
   user-select: none;
-  transition: transform 1.2s;
+  transition: transform 1s;
 }
 
-offer-item[expanded] .icon {
+offer-item[expanded] .icon i {
+  transform: rotate(180deg);
+}
+
+offer-item .icon {
   transform: rotate(180deg);
 }
 
@@ -78,7 +80,7 @@ offer-item[expanded] .icon {
 }
 
 
-@media (max-height: 420px) {
+@media (max-height: 600px) {
   offer-item section {
     padding: 10px;
   }
